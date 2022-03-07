@@ -16,8 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'division',
-        component: DivisionComponent
-        // loadChildren: () => import('../location/location.module').then(m => m.LocationModule)
+        loadChildren: () => import('../division/division.module').then(m => m.DivisionModule)
       },
 
       // {
