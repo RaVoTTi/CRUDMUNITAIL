@@ -1,0 +1,52 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-gray-100">
+  <body class="h-full">
+  ```
+-->
+<div class="min-h-full">
+  <nav class="bg-green-50">
+    <div class="px-1 mx-10 max-w-7xl sm:px-2 md:px-4 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <img
+              class="h-12 w-30"
+              src="https://www.malargue.gov.ar/wp-content/uploads/2020/11/Logo-web_Mesa-de-trabajo-1-1.png"
+              alt="Workflow"
+            />
+          </div>
+          <div class="hidden sm:block">
+            <div class="flex items-baseline ml-10 space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a routerLink="location" routerLinkActive="btn-primary-activate" class="block btn-primary">Location</a>
+
+              <a routerLink="division" routerLinkActive="btn-primary-activate" class="block btn-primary">Division</a>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a  routerLink="location" routerLinkActive="btn-primary-activate" class="block btn-primary">Dashboard</a>
+
+        <a  routerLink="division" routerLinkActive="btn-primary-activate" class="block btn-primary">Team</a>
+
+
+      </div>
+    </div>
+  </nav>
+
+  
+
+<router-outlet></router-outlet>
