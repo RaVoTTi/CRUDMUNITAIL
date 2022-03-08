@@ -6,6 +6,8 @@ import { LocationComponent } from './location/location.component';
 import { LocationViewComponent } from './location-view/location-view.component';
 import { LocationEditComponent } from './location-edit/location-edit.component';
 import { HomeLocationComponent } from './home-location/home-location.component';
+import { FormComponent } from './components/form/form.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { HomeLocationComponent } from './home-location/home-location.component';
     LocationViewComponent,
     LocationEditComponent,
     HomeLocationComponent,
+    FormComponent,
+    CardComponent,
   ],
   imports: [CommonModule, LocationRoutingModule],
   exports: [LocationComponent],

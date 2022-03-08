@@ -1,0 +1,136 @@
+
+  <div class="md:grid md:grid-cols-2 md:gap-6">
+    <div class="mt-5 md:mt-0 md:col-span-2">
+      <form action="#" method="POST">
+        <div class="overflow-hidden rounded-lg shadow">
+          <div class="px-4 py-5 bg-white sm:p-6">
+            <div class="grid grid-cols-6 gap-6">
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="title"
+                  class="block text-sm font-medium text-gray-700"
+                  >Title</label
+                >
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  autocomplete="given-name"
+                  placeholder={{placeHolders.title}}
+                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="number"
+                  class="block text-sm font-medium text-gray-700"
+                  >Number</label
+                >
+                <input
+                  type="text"
+                  name="number"
+                  id="number"
+                  autocomplete="given-name"
+                  placeholder={{placeHolders.number}}
+                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+              <div class="col-span-6">
+                <label
+                  for="description"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Description
+                </label>
+                <div class="mt-1">
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="3"
+                    class="block mt-1 w-full rounded-md border border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder={{placeHolders.description}}
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="division"
+                  class="block text-sm font-medium text-gray-700"
+                  >Division</label
+                >
+                <select
+                  id="division"
+                  name="division"
+                  autocomplete="division-name"
+                  class="block px-3 py-2 mt-1 w-full bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option>Alojamiento</option>
+                  <option>Hoteleria</option>
+                  <option>Restaurantes</option>
+                </select>
+              </div>
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="schedule"
+                  class="block text-sm font-medium text-gray-700"
+                  >Schedule</label
+                >
+                <input
+                  type="text"
+                  name="schedule"
+                  id="schedule"
+                  autocomplete="given-name"
+                  placeholder={{placeHolders.schedule}}
+
+                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+              <div class="col-span-6">
+                <label
+                  for="urlImage"
+                  class="block text-sm font-medium text-gray-700"
+                  >UrlImage</label
+                >
+                <input
+                  type="text"
+                  name="urlImage"
+                  id="urlImage"
+                  autocomplete="urlImage"
+                  placeholder={{placeHolders.urlImage}}
+
+                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-6">
+                <label
+                  for="urlLocation"
+                  class="block text-sm font-medium text-gray-700"
+                  >UrlLocation</label
+                >
+                <input
+                  type="text"
+                  name="urlLocation"
+                  id="urlLocation"
+                  autocomplete="address-level2"
+                  placeholder={{placeHolders.urlLocation}}
+
+                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="px-4 py-3 text-right bg-white sm:px-6">
+            <button
+              type="submit"
+              class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+

@@ -13,5 +13,8 @@ module.exports = {
   },
   tailwindcss: {},
   autoprefixer: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    // ...
+  ],
 }
