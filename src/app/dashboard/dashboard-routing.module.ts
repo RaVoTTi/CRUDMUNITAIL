@@ -1,14 +1,12 @@
 import { DashboardComponent } from './appbar/dashboard.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard],
+
     children:[
       {
         path: 'location',

@@ -4,6 +4,7 @@
       <form action="#" method="POST">
         <div class="overflow-hidden rounded-lg shadow">
           <div class="px-4 py-5 bg-white sm:p-6">
+            <h2 class="mb-4 text-lg font-semibold text-violet">Editar</h2>
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
                 <label
@@ -67,6 +68,7 @@
                   name="division"
                   [(ngModel)]= "placeHolders.division"
                   autocomplete="division-name"
+                  
                   class="block px-3 py-2 mt-1 w-full bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
                   <option  *ngFor="let division of divisions" [value]="division._id">{{division.name}}</option>
@@ -129,7 +131,7 @@
           </div>
           <div class="px-4 py-3 text-right bg-white sm:px-6">
             <button
-              (click)="locationAdd()"
+              (click)='submit()'
               type="submit"
               class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >

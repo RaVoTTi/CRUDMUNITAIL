@@ -1,5 +1,5 @@
 import { LocationGet } from 'src/interfaces/location.interface';
-import { RESTLocation, LocationPost } from './../../../interfaces/location.interface';
+import { RESTLocation, LocationPost, RESTGetLocation } from './../../../interfaces/location.interface';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -18,8 +18,14 @@ export class LocationService {
   getLocation(): Observable<RESTLocation>{
     return this.http.get<RESTLocation>(`${this._apiUrl}/location`)
   }
-  postLocation(locationPost:LocationPost): Observable<LocationGet>{
-    return this.http.post<LocationGet>(`${this._apiUrl}/location`,locationPost, {headers: this._headers})
+  getLocationById(id:string): Observable<RESTGetLocation>{
+    return this.http.get<RESTGetLocation>(`${this._apiUrl}/location/${id}`)
+  }
+  postLocation(locationPost:LocationPost): Observable<RESTGetLocation>{
+    return this.http.post<RESTGetLocation>(`${this._apiUrl}/location`,locationPost, {headers: this._headers})
+  }
+  postEditLocation(locationPost:LocationPost, id:string): Observable<RESTGetLocation>{
+    return this.http.post<RESTGetLocation>(`${this._apiUrl}/location/${id}`, locationPost, {headers: this._headers})
   }
 }
 

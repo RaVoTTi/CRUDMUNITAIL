@@ -1,6 +1,6 @@
 <div class="grid grid-cols-2 grid-flow-row-dense auto-rows-max gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:lg:grid-cols-6">
-    <app-form class="col-span-2 row-span-2"></app-form>
-    <app-card *ngFor="let location of locations" [location]="location"> </app-card>
+    <app-form class="col-span-2 row-span-2" [title]="'Agregar'" [add]="true" ></app-form>
+    <app-card *ngFor="let location of locations" [location]="location" > </app-card>
 
 
 </div>

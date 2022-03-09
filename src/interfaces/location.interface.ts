@@ -4,6 +4,9 @@ export interface RESTLocation {
   count: number;
   locations: LocationGet[];
 }
+export interface RESTGetLocation {
+  location: LocationGet;
+}
 export const locationGeneric: LocationPost = {
   title: '',
   description: '',

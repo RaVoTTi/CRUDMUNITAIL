@@ -1,7 +1,7 @@
 import { LocationEditComponent } from './location-edit/location-edit.component';
 import { LocationViewComponent } from './location-view/location-view.component';
 import { LocationComponent } from './location/location.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeLocationComponent } from './home-location/home-location.component';
 
@@ -15,12 +15,12 @@ const routes: Routes = [
         component: LocationComponent,
       },
       {
-        path: 'view',
+        path: 'view/:id',
         component: LocationViewComponent,
       },
       {
-        path: 'edit',
-        component: LocationEditComponent
+        path: '**',
+        redirectTo: '/'
       }
     ],
   },

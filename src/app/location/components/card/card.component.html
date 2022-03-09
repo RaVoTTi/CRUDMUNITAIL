@@ -13,16 +13,20 @@
     </div>
   </div> -->
 
-    <div class="container col-span-1 row-span-1 bg-white rounded-lg">
-        <div class="overflow-hidden h-full rounded-lg border-2 border-gray-200 border-opacity-60">
-            <img class="object-cover object-center w-full h-40"
-                src={{location.urlImage}} alt="blog">
-            <div class="p-4 transition duration-300 ease-in hover:bg-violet hover:text-white">
+<div
+  class="container overflow-hidden relative col-span-1 row-span-1 w-full h-full bg-white rounded-lg border-2 border-gray-200 border-opacity-60 transition duration-300 ease-in hover:bg-violet hover:text-white"
+  [routerLink]="['/dashboard/location/view', location._id]"
+  >
+  <img class="w-full h-36" src="{{ location.urlImage }}" alt="blog" />
 
-                <h1 class="mb-3 text-2xl font-semibold">{{location.title}}</h1>
+  <div class="m-3">
+    <h1 class="text-xl font-semibold">{{ location.title }}</h1>
 
+    <span
+      class="inline-block absolute bottom-0 px-3 py-1 mr-2 mb-2 text-sm font-semibold bg-gray-200 rounded-full text-violet"
+      >{{ location.division.name }}</span
+    >
+  </div>
+</div>
 
-            </div>
-        </div>
-    </div>
-    <!-- "https://picsum.photos/id/188/720/400" -->
+<!-- "https://picsum.photos/id/188/720/400" -->
