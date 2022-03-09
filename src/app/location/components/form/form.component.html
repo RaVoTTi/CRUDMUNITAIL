@@ -12,6 +12,7 @@
                   >Title</label
                 >
                 <input
+                  [(ngModel)]="placeHolders.title"
                   type="text"
                   name="title"
                   id="title"
@@ -27,6 +28,7 @@
                   >Number</label
                 >
                 <input
+                  [(ngModel)]="placeHolders.number"
                   type="text"
                   name="number"
                   id="number"
@@ -45,6 +47,7 @@
                 <div class="mt-1">
                   <textarea
                     id="description"
+                    [(ngModel)]="placeHolders.description"
                     name="description"
                     rows="3"
                     class="block mt-1 w-full rounded-md border border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -62,12 +65,12 @@
                 <select
                   id="division"
                   name="division"
+                  [(ngModel)]= "placeHolders.division"
                   autocomplete="division-name"
                   class="block px-3 py-2 mt-1 w-full bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
-                  <option>Alojamiento</option>
-                  <option>Hoteleria</option>
-                  <option>Restaurantes</option>
+                  <option  *ngFor="let division of divisions" [value]="division._id">{{division.name}}</option>
+
                 </select>
               </div>
               <div class="col-span-6 sm:col-span-3">
@@ -77,6 +80,7 @@
                   >Schedule</label
                 >
                 <input
+                  [(ngModel)]="placeHolders.schedule"
                   type="text"
                   name="schedule"
                   id="schedule"
@@ -93,6 +97,7 @@
                   >UrlImage</label
                 >
                 <input
+                  [(ngModel)]="placeHolders.urlImage"
                   type="text"
                   name="urlImage"
                   id="urlImage"
@@ -110,6 +115,7 @@
                   >UrlLocation</label
                 >
                 <input
+                  [(ngModel)]="placeHolders.urlLocation"
                   type="text"
                   name="urlLocation"
                   id="urlLocation"
@@ -123,6 +129,7 @@
           </div>
           <div class="px-4 py-3 text-right bg-white sm:px-6">
             <button
+              (click)="locationAdd()"
               type="submit"
               class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >

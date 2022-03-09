@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { LocationGet } from 'src/interfaces/location.interface';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
+
+  @Input() location! : LocationGet
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

@@ -8,6 +8,7 @@ import { LocationEditComponent } from './location-edit/location-edit.component';
 import { HomeLocationComponent } from './home-location/home-location.component';
 import { FormComponent } from './components/form/form.component';
 import { CardComponent } from './components/card/card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { CardComponent } from './components/card/card.component';
     FormComponent,
     CardComponent,
   ],
-  imports: [CommonModule, LocationRoutingModule],
+  imports: [CommonModule, LocationRoutingModule,FormsModule],
   exports: [LocationComponent],
 })
 export class LocationModule {}
