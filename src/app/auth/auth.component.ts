@@ -25,7 +25,7 @@ export class AuthComponent {
     this.authService.login(this.userLogin).subscribe(
       (resp)=>{
         if(resp.user){
-          this.router.navigate(['./dashboard'])
+          this.router.navigate(['./dashboard/location'])
         }
       }
     )

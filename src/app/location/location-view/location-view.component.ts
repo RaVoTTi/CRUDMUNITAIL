@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LocationViewComponent implements OnInit {
   id:string = ''
-  location: LocationPost = locationGeneric;
+  placeHolders: LocationPost = locationGeneric;
   constructor(private activateRoute: ActivatedRoute, private locationService:LocationService) {
 
     this.activateRoute.params.subscribe(({id}) => {
@@ -21,7 +21,7 @@ export class LocationViewComponent implements OnInit {
       (resp)=>{
         const location = resp.location
         let {_id, user, division, ...rest } = location
-        this.location = {...rest, division: division.name}
+        this.placeHolders = {...rest, division: division.name}
  
       }
       )

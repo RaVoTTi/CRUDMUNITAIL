@@ -28,10 +28,13 @@ export class FormComponent {
     private divisionService: DivisionService,
 
   ) {
+
+
+  }
+  ngOnInit(): void {
     this.divisionService.divisionGet().subscribe((resp) => {
       this.divisions = resp.divisions;
     });
-
   }
   submit() {
     if (this.placeHolders.title.trim().length === 0) {
@@ -54,19 +57,23 @@ export class FormComponent {
     } else {
       this.locationEdit();
     }
+    this.placeHolders 
   }
   locationAdd() {
-    this.locationService.postLocation(this.placeHolders).subscribe((resp) => {
+    this.locationService.postLocation(this.placeHolders)
+      .subscribe((resp) => {
+      this.placeHolders = locationGeneric
       console.log(resp.location);
     });
-    this.placeHolders = locationGeneric;
+
   }
   locationEdit() {
     this.locationService
-      .postEditLocation(this.placeHolders, this.id)
+      .putLocation(this.placeHolders, this.id)
       .subscribe((resp) => {
+        this.placeHolders = locationGeneric
         console.log(resp.location);
       });
-    this.placeHolders = locationGeneric;
+
   }
 }

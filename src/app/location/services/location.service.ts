@@ -24,8 +24,8 @@ export class LocationService {
   postLocation(locationPost:LocationPost): Observable<RESTGetLocation>{
     return this.http.post<RESTGetLocation>(`${this._apiUrl}/location`,locationPost, {headers: this._headers})
   }
-  postEditLocation(locationPost:LocationPost, id:string): Observable<RESTGetLocation>{
-    return this.http.post<RESTGetLocation>(`${this._apiUrl}/location/${id}`, locationPost, {headers: this._headers})
+  putLocation(locationPut:LocationPost, id:string): Observable<RESTGetLocation>{
+    return this.http.put<RESTGetLocation>(`${this._apiUrl}/location/${id}`, locationPut, {headers: this._headers})
   }
 }
 
