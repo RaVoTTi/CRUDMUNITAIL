@@ -21,7 +21,7 @@ export class FormComponent {
   @Input() id: string = '';
   divisions: IdName[] = [];
   division: string = '';
-
+  terminoErr: string = ''
 
   constructor(
     private locationService: LocationService,
@@ -38,18 +38,32 @@ export class FormComponent {
   }
   submit() {
     if (this.placeHolders.title.trim().length === 0) {
-      return;
-    }
-    if (this.placeHolders.description.trim().length === 0) {
-      return;
-    }
-    if (this.placeHolders.division.trim().length === 0) {
-      return;
-    }
-    if (this.placeHolders.schedule.trim().length === 0) {
+      this.terminoErr = 'El titulo es requerido'
       return;
     }
     if (this.placeHolders.number.trim().length === 0) {
+      this.terminoErr = 'El numero es requerido'
+      
+      return;
+    }
+    if (this.placeHolders.description.trim().length === 0) {
+      this.terminoErr = 'La descripcion es requerida'
+      
+      return;
+    }
+    if (this.placeHolders.division.trim().length === 0) {
+      this.terminoErr = 'La division es requerido'
+      
+      return;
+    }
+    if (this.placeHolders.schedule.trim().length === 0) {
+      this.terminoErr = 'El horario es requerido'
+      
+      return;
+    }
+    if (this.placeHolders.number.trim().length === 0) {
+      this.terminoErr = 'El numero es requerido'
+      
       return;
     }
     if (this.add === true) {

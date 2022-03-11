@@ -130,10 +130,12 @@
             </div>
           </div>
           <div class="px-4 py-3 text-right bg-white sm:px-6">
+
+<app-err-form *ngIf="terminoErr !== ''"  [terminoErr]="terminoErr"> </app-err-form>
             <button
               (click)='submit()'
               type="submit"
-              class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua"
             >
               Save
             </button>

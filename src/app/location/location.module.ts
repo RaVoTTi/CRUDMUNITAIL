@@ -10,6 +10,7 @@ import { FormComponent } from './components/form/form.component';
 import { CardComponent } from './components/card/card.component';
 import { FormsModule } from '@angular/forms';
 import { ViewComponent } from './components/view/view.component';
+import { ErrFormComponent } from './components/err-form/err-form.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ViewComponent } from './components/view/view.component';
     FormComponent,
     CardComponent,
     ViewComponent,
+    ErrFormComponent,
   ],
   imports: [CommonModule, LocationRoutingModule,FormsModule],
   exports: [LocationComponent],
