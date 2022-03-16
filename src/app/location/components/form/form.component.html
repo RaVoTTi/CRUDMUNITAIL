@@ -1,147 +1,132 @@
+<div class="md:grid md:grid-cols-2 md:gap-6">
+  <div class="md:col-span-2">
+    <form (ngSubmit)="submit()" [formGroup]="myForm">
+      <div
+        class="overflow-hidden rounded-lg border-gray-200 border-opacity-60 shadow"
+      >
+        <div class="px-4 py-5 bg-white sm:p-6">
+          <h2 class="mb-4 text-lg font-semibold text-violet"></h2>
+          <div class="grid grid-cols-6 gap-6">
+            <div class="col-span-6 sm:col-span-3">
+              <label class="block text-sm font-medium text-gray-700"
+                >Title</label
+              >
+              <input
+                type="text"
+                formControlName="title"
+                placeholder="{{ placeHolders.title }}"
+                class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
+              />
+              <span *ngIf="validateCamp('title')" class="text-sm text-red-600">*Campo requerido </span>
 
-  <div class="md:grid md:grid-cols-2 md:gap-6">
-    <div class="md:col-span-2">
-      <form action="#" method="POST">
-        <div class="overflow-hidden rounded-lg border-gray-200 border-opacity-60 shadow">
-          <div class="px-4 py-5 bg-white sm:p-6">
-            <h2 class="mb-4 text-lg font-semibold text-violet">{{title | uppercase}}</h2>
-            <div class="grid grid-cols-6 gap-6">
-              <div class="col-span-6 sm:col-span-3">
-                <label
-                  for="title"
-                  class="block text-sm font-medium text-gray-700"
-                  >Title</label
-                >
-                <input
-                  [(ngModel)]="placeHolders.title"
-                  type="text"
-                  name="title"
-                  id="title"
-                  autocomplete="given-name"
-                  placeholder={{placeHolders.title}}
-                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            </div>
+            <div class="col-span-6 sm:col-span-3">
+              <label
+                class="block text-sm font-medium text-gray-700"
+                >Number</label
+              >
+              <input
+                type="text"
+                formControlName="number"
+                placeholder="{{ placeHolders.number }}"
+                class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
                 />
-              </div>
-              <div class="col-span-6 sm:col-span-3">
-                <label
-                  for="number"
-                  class="block text-sm font-medium text-gray-700"
-                  >Number</label
-                >
-                <input
-                  [(ngModel)]="placeHolders.number"
-                  type="text"
-                  name="number"
-                  id="number"
-                  autocomplete="given-name"
-                  placeholder={{placeHolders.number}}
-                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
-              <div class="col-span-6">
-                <label
-                  for="description"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Description
-                </label>
-                <div class="mt-1">
-                  <textarea
-                    id="description"
-                    [(ngModel)]="placeHolders.description"
-                    name="description"
-                    rows="3"
-                    class="block mt-1 w-full rounded-md border border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    placeholder={{placeHolders.description}}
-                  ></textarea>
-                </div>
-              </div>
+              <span *ngIf="validateCamp('number')" class="text-sm text-red-600">*Campo requerido </span>
 
-              <div class="col-span-6 sm:col-span-3">
-                <label
-                  for="division"
-                  class="block text-sm font-medium text-gray-700"
-                  >Division</label
-                >
-                <select
-                  id="division"
-                  name="division"
-                  [(ngModel)]= "placeHolders.division"
-                  autocomplete="division-name"
-                  
-                  class="block px-3 py-2 mt-1 w-full bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                >
-                  <option  *ngFor="let division of divisions" [value]="division._id">{{division.name}}</option>
-
-                </select>
-              </div>
-              <div class="col-span-6 sm:col-span-3">
-                <label
-                  for="schedule"
-                  class="block text-sm font-medium text-gray-700"
-                  >Schedule</label
-                >
-                <input
-                  [(ngModel)]="placeHolders.schedule"
-                  type="text"
-                  name="schedule"
-                  id="schedule"
-                  autocomplete="given-name"
-                  placeholder={{placeHolders.schedule}}
-
-                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
-              <div class="col-span-6">
-                <label
-                  for="urlImage"
-                  class="block text-sm font-medium text-gray-700"
-                  >UrlImage</label
-                >
-                <input
-                  [(ngModel)]="placeHolders.urlImage"
-                  type="text"
-                  name="urlImage"
-                  id="urlImage"
-                  autocomplete="urlImage"
-                  placeholder={{placeHolders.urlImage}}
-
-                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
-
-              <div class="col-span-6 sm:col-span-6">
-                <label
-                  for="urlLocation"
-                  class="block text-sm font-medium text-gray-700"
-                  >UrlLocation</label
-                >
-                <input
-                  [(ngModel)]="placeHolders.urlLocation"
-                  type="text"
-                  name="urlLocation"
-                  id="urlLocation"
-                  autocomplete="address-level2"
-                  placeholder={{placeHolders.urlLocation}}
-
-                  class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
+            </div>
+            <div class="col-span-6">
+              <label
+                class="block text-sm font-medium text-gray-700"
+              >
+                Description
+              </label>
+              <div class="mt-1">
+                <textarea
+                  id="description"
+                  name="description"
+                  formControlName="description"
+                  rows="3"
+                  class="block mt-1 w-full rounded-md border border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
+                  placeholder="{{ placeHolders.description }}"
+                ></textarea>
+                <span *ngIf="validateCamp('description')" class="text-sm text-red-600">*Minimo 10 palabras </span>
+              
               </div>
             </div>
-          </div>
-          <div class="px-4 py-3 text-right bg-white sm:px-6">
 
-<app-err-form *ngIf="terminoErr !== ''"  [terminoErr]="terminoErr"> </app-err-form>
-            <button
-              (click)='submit()'
-              type="submit"
-              class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua"
-            >
-              Save
-            </button>
+            <div class="col-span-6 sm:col-span-3">
+              <label
+                class="block text-sm font-medium text-gray-700"
+                >Division</label
+              >
+              <select
+                formControlName="division"
+                class="block px-3 py-2 mt-1 w-full bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-violet focus:border-violet sm:text-sm"
+              >
+                <option
+                  *ngFor="let division of divisions"
+                  [value]="division._id"
+                >
+                  {{ division.name }}
+                </option>
+              </select>
+              <span *ngIf="validateCamp('division')" class="text-sm text-red-600">*Campo requerido </span>
+
+            </div>
+            <div class="col-span-6 sm:col-span-3">
+              <label
+                for="schedule"
+                class="block text-sm font-medium text-gray-700"
+                >Schedule</label
+              >
+              <input
+                formControlName="schedule"
+                type="text"
+                placeholder="{{ placeHolders.schedule }}"
+                class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
+              />
+              <span *ngIf="validateCamp('schedule')" class="text-sm text-red-600">*Campo requerido </span>
+
+            </div>
+            <div class="col-span-6">
+              <label
+                for="urlImage"
+                class="block text-sm font-medium text-gray-700"
+                >UrlImage</label
+              >
+              <input
+                formControlName="urlImage"
+                type="text"
+                placeholder="{{ placeHolders.urlImage }}"
+                class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
+              />
+
+            </div>
+
+            <div class="col-span-6 sm:col-span-6">
+              <label
+                for="urlLocation"
+                class="block text-sm font-medium text-gray-700"
+                >UrlLocation</label
+              >
+              <input
+                type="text"
+                formControlName="urlImage"
+                placeholder="{{ placeHolders.urlLocation }}"
+                class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
+              />
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+        <div class="px-4 py-3 text-right bg-white sm:px-6">
+          <button
+            type="submit"
+            class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
-
+</div>

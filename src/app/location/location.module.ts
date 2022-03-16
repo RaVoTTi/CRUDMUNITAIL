@@ -6,11 +6,10 @@ import { LocationComponent } from './location/location.component';
 import { LocationViewComponent } from './location-view/location-view.component';
 import { LocationEditComponent } from './location-edit/location-edit.component';
 import { HomeLocationComponent } from './home-location/home-location.component';
-import { FormComponent } from './components/form/form.component';
 import { CardComponent } from './components/card/card.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ViewComponent } from './components/view/view.component';
-import { ErrFormComponent } from './components/err-form/err-form.component';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +17,12 @@ import { ErrFormComponent } from './components/err-form/err-form.component';
     LocationViewComponent,
     LocationEditComponent,
     HomeLocationComponent,
-    FormComponent,
     CardComponent,
     ViewComponent,
-    ErrFormComponent,
+    FormComponent
   ],
-  imports: [CommonModule, LocationRoutingModule,FormsModule],
+  imports: [CommonModule, LocationRoutingModule,ReactiveFormsModule,
+  ],
   exports: [LocationComponent],
 })
 export class LocationModule {}
