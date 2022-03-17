@@ -1,4 +1,4 @@
-import { locationGeneric, LocationPost } from './../../../../interfaces/location.interface';
+import {  locationGetGeneric,LocationGet } from 'src/interfaces/location.interface';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ import { Component, Input, OnInit } from '@angular/core';
   ]
 })
 export class ViewComponent  {
-  @Input() location: LocationPost = locationGeneric;
+  @Input() location: LocationGet = locationGetGeneric;
 
   constructor() { 
 

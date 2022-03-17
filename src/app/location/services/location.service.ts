@@ -27,5 +27,10 @@ export class LocationService {
   putLocation(locationPut:LocationPost, id:string): Observable<RESTGetLocation>{
     return this.http.put<RESTGetLocation>(`${this._apiUrl}/location/${id}`, locationPut, {headers: this._headers})
   }
+  delLocation(id:string): Observable<RESTGetLocation>{
+    return this.http.delete<RESTGetLocation>(`${this._apiUrl}/location/${id}`, {headers: this._headers})
+  }
+
+
 }
 

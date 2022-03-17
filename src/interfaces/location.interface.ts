@@ -7,7 +7,7 @@ export interface RESTLocation {
 export interface RESTGetLocation {
   location: LocationGet;
 }
-export const locationGeneric: LocationPost = {
+export const locationPostGeneric: LocationPost = {
   title: '',
   description: '',
   division: '',
@@ -16,7 +16,18 @@ export const locationGeneric: LocationPost = {
   urlImage: '',
   urlLocation: '',
 };
-
+export const locationGetGeneric: LocationGet = {
+  title: '',
+  description: '',
+  division: {
+    name: '',
+    _id:''
+  },
+  number: '',
+  schedule: '',
+  urlImage: '',
+  urlLocation: '',
+};
 export interface LocationGet {
   _id?: string;
   title: string;

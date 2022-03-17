@@ -14,7 +14,7 @@
               <input
                 type="text"
                 formControlName="title"
-                placeholder="{{ placeHolders.title }}"
+                
                 class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
               />
               <span *ngIf="validateCamp('title')" class="text-sm text-red-600">*Campo requerido </span>
@@ -28,7 +28,7 @@
               <input
                 type="text"
                 formControlName="number"
-                placeholder="{{ placeHolders.number }}"
+                
                 class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
                 />
               <span *ngIf="validateCamp('number')" class="text-sm text-red-600">*Campo requerido </span>
@@ -47,7 +47,7 @@
                   formControlName="description"
                   rows="3"
                   class="block mt-1 w-full rounded-md border border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
-                  placeholder="{{ placeHolders.description }}"
+                  
                 ></textarea>
                 <span *ngIf="validateCamp('description')" class="text-sm text-red-600">*Minimo 10 palabras </span>
               
@@ -82,7 +82,7 @@
               <input
                 formControlName="schedule"
                 type="text"
-                placeholder="{{ placeHolders.schedule }}"
+                
                 class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
               />
               <span *ngIf="validateCamp('schedule')" class="text-sm text-red-600">*Campo requerido </span>
@@ -97,7 +97,7 @@
               <input
                 formControlName="urlImage"
                 type="text"
-                placeholder="{{ placeHolders.urlImage }}"
+                
                 class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
               />
 
@@ -112,13 +112,26 @@
               <input
                 type="text"
                 formControlName="urlImage"
-                placeholder="{{ placeHolders.urlLocation }}"
+                
                 class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
               />
             </div>
           </div>
         </div>
-        <div class="px-4 py-3 text-right bg-white sm:px-6">
+        <div class="flex justify-between px-4 py-3 bg-white sm:px-6">
+          <button
+            *ngIf="add === false"
+            (click)="remove()"
+            type="button"
+            class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md border border-transparent shadow-sm hover:bg-aqua"
+          >
+            Remove
+          </button>
+          <div 
+          *ngIf="add === true"
+          class="spacer"> 
+
+          </div>
           <button
             type="submit"
             class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua"
