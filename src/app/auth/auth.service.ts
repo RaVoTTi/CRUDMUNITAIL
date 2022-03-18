@@ -1,7 +1,7 @@
 import { UserLogin, RESTAuth, User } from './../../interfaces/auth.interface';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,8 @@ export class AuthService {
   private _user: User | undefined;
   private _token: string | undefined ;
 
+  private _headers : HttpHeaders = new HttpHeaders()
+  .set('super-token', localStorage.getItem('super-token') || '')
 
   get user(){
     return {...this._user!}
@@ -24,6 +26,11 @@ export class AuthService {
     
     
   }
+
+  get headers(){
+    return this._headers
+  }
+
   verifyJWT(): Observable<boolean> {
     if (!localStorage.getItem('super-token')){
       return of(false)

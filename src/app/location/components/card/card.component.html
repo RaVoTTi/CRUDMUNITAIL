@@ -13,19 +13,22 @@
     </div>
   </div> -->
 
-  <div
-  class="container overflow-hidden relative col-span-1 row-span-1 w-full h-full bg-white rounded-lg border-2 border-gray-200 border-opacity-60 transition duration-300 ease-in hover:bg-violet hover:text-white"
+<div
+  class="container overflow-hidden relative col-span-1 row-span-1 w-full h-full bg-white rounded-lg border-2 border-gray-200 border-opacity-60 shadow-xl transition duration-300 ease-in hover:bg-violet hover:text-white hover:shadow"
   [routerLink]="['/dashboard/location/view', location._id]"
-  >
-  <img class="w-full h-36" src="{{ location.urlImage }}" alt="{{ location.urlImage }}" />
+>
+  <img
+    class="w-full h-36"
+    src="{{ location.urlImage }}"
+    alt="{{ location.urlImage }}"
+  />
 
   <div class="m-3 h-28">
     <h1 class="text-xl font-semibold">{{ location.title }}</h1>
 
     <span
       class="inline-block absolute bottom-0 px-3 py-1 mr-2 mb-2 text-xs font-semibold bg-gray-200 rounded-full text-violet"
-      
-      >#{{location.division.name}}</span
+      >#{{ location.division.name }}</span
     >
   </div>
 </div>

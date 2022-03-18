@@ -1,0 +1,36 @@
+
+
+  <div
+  class="overflow-hidden px-4 py-4 w-full h-full bg-white rounded-lg border-gray-200 border-opacity-60 shadow-xl transition duration-200 hover:shadow"
+  >
+
+      <form (ngSubmit)="submit()" [formGroup]="myForm">
+        <div class="w-full h-full">
+          <h2 class="text-lg font-semibold text-violet">Agregar</h2>
+          <div class="grid grid-cols-6 gap-6">
+            <div class="col-span-6">
+              <label
+              for="urlImage"
+              class="block text-sm font-medium text-gray-700"
+              >Name</label
+              >
+              <input
+              formControlName="name"
+              type="text"
+              class="block mt-2 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between mt-3 bg-white m">
+          
+          <div class="spacer"></div>
+          <button
+          type="submit"
+          class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white rounded-md border border-transparent shadow-sm bg-violet hover:bg-aqua"
+          >
+          Save
+        </button>
+      </div>
+    </form>
+    </div>

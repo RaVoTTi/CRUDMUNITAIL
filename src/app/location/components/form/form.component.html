@@ -2,10 +2,10 @@
   <div class="md:col-span-2">
     <form (ngSubmit)="submit()" [formGroup]="myForm">
       <div
-        class="overflow-hidden rounded-lg border-gray-200 border-opacity-60 shadow"
+        class="overflow-hidden rounded-lg border-gray-200 border-opacity-60 shadow-xl transition duration-200 hover:shadow"
       >
         <div class="px-4 py-5 bg-white sm:p-6">
-          <h2 class="mb-4 text-lg font-semibold text-violet"></h2>
+          <h2 class="mb-4 text-lg font-semibold text-violet">{{title}}</h2>
           <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6 sm:col-span-3">
               <label class="block text-sm font-medium text-gray-700"

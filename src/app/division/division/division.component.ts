@@ -1,4 +1,6 @@
+import { DivisionService } from './../services/division.service';
 import { Component, OnInit } from '@angular/core';
+import { IdName } from 'src/interfaces/division.interface';
 
 @Component({
   selector: 'app-division',
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class DivisionComponent implements OnInit {
+  divisions: IdName[] = []
 
-  constructor() { }
+  constructor(private divisionService: DivisionService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.divisionService.divisionGet().subscribe(
+      (resp )=> {
+        this.divisions = resp.divisions
+      }
+    )
   }
-
 }

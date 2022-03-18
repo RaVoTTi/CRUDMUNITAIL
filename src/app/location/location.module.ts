@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -21,7 +22,7 @@ import { FormComponent } from './components/form/form.component';
     ViewComponent,
     FormComponent
   ],
-  imports: [CommonModule, LocationRoutingModule,ReactiveFormsModule,
+  imports: [CommonModule, LocationRoutingModule,ReactiveFormsModule, SharedModule
   ],
   exports: [LocationComponent],
 })
