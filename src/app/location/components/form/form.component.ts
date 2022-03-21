@@ -82,6 +82,7 @@ export class FormComponent implements OnInit, OnChanges {
     );
   }
   locationAdd() {
+    console.log(this.myForm.value)
     this.locationService.postLocation(this.myForm.value).subscribe(
       (resp) => {
         if (resp.location._id) {
