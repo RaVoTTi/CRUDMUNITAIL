@@ -1,4 +1,4 @@
-import { LocationGet } from 'src/interfaces/location.interface';
+import { ILocation, ILocationPopulate } from 'src/interfaces/location.interface';
 import { Component, Input} from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ import { Component, Input} from '@angular/core';
 })
 export class CardComponent {
 
-  @Input() location! : LocationGet
+  @Input() location! : ILocationPopulate
 
   constructor() { }
 

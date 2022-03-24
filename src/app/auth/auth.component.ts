@@ -1,4 +1,4 @@
-import { UserLogin } from './../../interfaces/auth.interface';
+import { IUserLogin } from './../../interfaces/auth.interface';
 import { AuthService } from './auth.service';
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   ]
 })
 export class AuthComponent {
-  userLogin: UserLogin = {
+  userLogin: IUserLogin = {
     email:'',
     password:'',
     
@@ -23,8 +23,9 @@ export class AuthComponent {
     if(this.userLogin.password.trim().length === 0){return}
  
     this.authService.login(this.userLogin).subscribe(
-      (resp)=>{
-        if(resp.user){
+      (resp)=>
+      {
+        if(resp.result[0]){
           this.router.navigate(['./dashboard/location'])
         }
       }

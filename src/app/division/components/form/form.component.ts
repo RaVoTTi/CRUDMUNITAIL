@@ -20,7 +20,7 @@ export class FormComponent  {
     console.log(this.myForm.value)
     this.divisionService.divisionPost(this.myForm.value.name).subscribe(
       resp => {
-        console.log(resp.division.name)
+        console.log(resp.result[0].name)
       }
     )
   }

@@ -1,4 +1,4 @@
-import {  locationGetGeneric,LocationGet } from 'src/interfaces/location.interface';
+import {  ILocationPopulate } from 'src/interfaces/location.interface';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ import { Component, Input, OnInit } from '@angular/core';
   ]
 })
 export class ViewComponent  {
-  @Input() location: LocationGet = locationGetGeneric;
+  @Input() location!: ILocationPopulate;
 
   constructor() { 
 

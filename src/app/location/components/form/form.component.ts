@@ -1,22 +1,19 @@
-import { RESTGetLocation } from './../../../../interfaces/location.interface';
+import {  ILocation, ILocationPopulate, locationGenericPopulate} from './../../../../interfaces/location.interface';
 import { Router } from '@angular/router';
 import {
   Component,
   Input,
   OnChanges,
   OnInit,
-  platformCore,
   SimpleChanges,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { LocationService } from './../../services/location.service';
 import { DivisionService } from './../../../division/services/division.service';
-import { IdName } from './../../../../interfaces/division.interface';
-import {
-  locationGetGeneric,
-  LocationGet,
-} from 'src/interfaces/location.interface';
+import { IDivision } from 'src/interfaces/division.interface';
+import { tap } from 'rxjs';
+
 
 @Component({
   selector: 'app-form',
@@ -24,12 +21,12 @@ import {
   styles: [],
 })
 export class FormComponent implements OnInit, OnChanges {
-  @Input() placeHolders: LocationGet = locationGetGeneric;
+  @Input() placeHolders!: ILocationPopulate | ILocation ;
 
   @Input() title!: string;
   @Input() add: boolean = true;
   @Input() id: string = '';
-  divisions: IdName[] = [];
+  divisions: IDivision[] = [];
   terminoErr: string = '';
 
 
@@ -53,14 +50,14 @@ export class FormComponent implements OnInit, OnChanges {
   ) {}
   ngOnInit(): void {
     this.divisionService.divisionGet().subscribe((resp) => {
-      this.divisions = resp.divisions;
+      this.divisions = resp.result;
     });
   }
   ngOnChanges(change: SimpleChanges) {
     if (change['placeHolders']) {
       const { _id, user, division, ...rest } =
-        (change['placeHolders'].currentValue as LocationGet) ||
-        locationGetGeneric;
+        (change['placeHolders'].currentValue as ILocationPopulate) ||
+        locationGenericPopulate;
       // console.log(rest)
       this.myForm.reset({ ...rest, division: division._id });
     }
@@ -83,9 +80,9 @@ export class FormComponent implements OnInit, OnChanges {
   }
   locationAdd() {
     console.log(this.myForm.value)
-    this.locationService.postLocation(this.myForm.value).subscribe(
+    this.locationService.locationPost(this.myForm.value).subscribe(
       (resp) => {
-        if (resp.location._id) {
+        if (resp.result[0]._id) {
           Swal.fire({
             icon: 'success',
             title: 'Good',
@@ -104,11 +101,13 @@ export class FormComponent implements OnInit, OnChanges {
     this.myForm.reset();
   }
   locationEdit() {
+    // console.log(this.myForm.value)
     this.locationService
-      .putLocation(this.myForm.value, this.id)
+      .locationPut( this.id , this.myForm.value)
+
       .subscribe((resp) => {
-        if (resp.location._id) {
-          this.placeHolders = resp.location;
+        if (resp.result[0]._id) {
+          this.placeHolders = resp.result[0];
           Swal.fire({
             icon: 'success',
             title: 'Good',
@@ -124,10 +123,10 @@ export class FormComponent implements OnInit, OnChanges {
       });
   }
   remove() {
-    this.locationService.delLocation(this.id).subscribe((resp) => {
+    this.locationService.locationDelete(this.id).subscribe((resp) => {
       console.log(resp)
-      if (resp.location._id) {
-        this.placeHolders = resp.location;
+      if (resp.result[0]._id) {
+        this.placeHolders = resp.result[0];
         Swal.fire({
           icon: 'success',
           title: 'Good',

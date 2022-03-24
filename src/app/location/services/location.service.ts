@@ -1,47 +1,44 @@
 import { AuthService } from './../../auth/auth.service';
-import { LocationGet } from 'src/interfaces/location.interface';
-import {
-  RESTLocation,
-  LocationPost,
-  RESTGetLocation,
-} from './../../../interfaces/location.interface';
+import { ILocationPopulate, ILocation} from 'src/interfaces/location.interface';
+
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { IResponse } from 'src/interfaces/response.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocationService {
   private _apiUrl = environment.apiUrl;
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
-  getLocation(): Observable<RESTLocation> {
-    return this.http.get<RESTLocation>(`${this._apiUrl}/location`);
+  locationGet(): Observable<IResponse<ILocationPopulate>> {
+    return this.http.get<IResponse<ILocationPopulate>>(`${this._apiUrl}/api/location`, { headers: this.authService.headers });
   }
-  getLocationById(id: string): Observable<RESTGetLocation> {
-    return this.http.get<RESTGetLocation>(`${this._apiUrl}/location/${id}`);
+  locationGetById(id: string): Observable<IResponse<ILocationPopulate>> {
+    return this.http.get<IResponse<ILocationPopulate>>(`${this._apiUrl}/api/location/${id}`, { headers: this.authService.headers });
   }
-  postLocation(locationPost: LocationPost): Observable<RESTGetLocation> {
-    return this.http.post<RESTGetLocation>(
-      `${this._apiUrl}/location`,
+  locationPost(locationPost: ILocation): Observable<IResponse<ILocation>> {
+    return this.http.post<IResponse<ILocation>>(
+      `${this._apiUrl}/api/location`,
       locationPost,
       { headers: this.authService.headers }
     );
   }
-  putLocation(
-    locationPut: LocationPost,
-    id: string
-  ): Observable<RESTGetLocation> {
-    return this.http.put<RESTGetLocation>(
-      `${this._apiUrl}/location/${id}`,
+  locationPut(
+    id: string,
+    locationPut: ILocation,
+  ): Observable<IResponse<ILocation>> {
+    return this.http.put<IResponse<ILocation>>(
+      `${this._apiUrl}/api/location/${id}`,
       locationPut,
       { headers: this.authService.headers }
     );
   }
-  delLocation(id: string): Observable<RESTGetLocation> {
-    return this.http.delete<RESTGetLocation>(`${this._apiUrl}/location/${id}`, {
+  locationDelete(id: string): Observable<IResponse<ILocation>> {
+    return this.http.delete<IResponse<ILocation>>(`${this._apiUrl}/api/location/${id}`, {
       headers: this.authService.headers,
     });
   }

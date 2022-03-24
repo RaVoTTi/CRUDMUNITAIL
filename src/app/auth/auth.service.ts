@@ -1,38 +1,39 @@
-import { UserLogin, RESTAuth, User } from './../../interfaces/auth.interface';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, tap } from 'rxjs';
+import { IResponse } from 'src/interfaces/response.interface';
+import { IUser, IUserLogin } from 'src/interfaces/auth.interface';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private _apiUrl = environment.apiUrl;
 
-  private _user: User | undefined;
-  private _token: string | undefined ;
+  private _user: IUser | undefined;
+  private _token: string | undefined;
 
-  private _headers : HttpHeaders = new HttpHeaders()
-  .set('super-token', localStorage.getItem('super-token') || '')
+  private _headers: HttpHeaders = new HttpHeaders()
+    .set('super-token', localStorage.getItem('super-token') || '')
 
-  get user(){
-    return {...this._user!}
+  get user() {
+    return { ...this._user! }
   }
-  get token(){
+  get token() {
     return this._token!
   }
 
   constructor(private http: HttpClient) {
-    
-    
+
+
   }
 
-  get headers(){
+  get headers() {
     return this._headers
   }
 
   verifyJWT(): Observable<boolean> {
-    if (!localStorage.getItem('super-token')){
+    if (!localStorage.getItem('super-token')) {
       return of(false)
       // return false
     }
@@ -41,15 +42,14 @@ export class AuthService {
     // return true
 
   }
-  
 
-  login(userLogin: UserLogin): Observable<RESTAuth> {
-    return this.http.post<RESTAuth>(`${this._apiUrl}/auth/login`, userLogin).pipe(
+  login(userLogin: IUserLogin): Observable<IResponse<IUser>> {
+    return this.http.post<IResponse<IUser>>(`${this._apiUrl}/api/auth`, userLogin).pipe(
       tap((response) => {
-        this._user = response.user;
+        this._user = response.result[0];
         this._token = response.token;
       }),
-      tap(( _ ) => localStorage.setItem('super-token', this.token)),
+      tap((_) => localStorage.setItem('super-token', this.token)),
     );
   }
 }

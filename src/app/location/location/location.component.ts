@@ -1,5 +1,5 @@
 import { LocationService } from './../services/location.service';
-import { LocationGet } from 'src/interfaces/location.interface';
+import { ILocation, ILocationPopulate } from 'src/interfaces/location.interface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class LocationComponent implements OnInit{
-  locations: LocationGet[] = [];
+  locations: ILocationPopulate[] = [];
 
   constructor(private locationService: LocationService) {
 
   }
   ngOnInit(){
-    this.locationService.getLocation().subscribe((resp) => {
-      this.locations = resp.locations
+    this.locationService.locationGet().subscribe((resp) => {
+      this.locations = resp.result
     });
   }
 }

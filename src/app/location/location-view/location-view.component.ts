@@ -1,4 +1,4 @@
-import { LocationGet, locationGetGeneric, LocationPost } from './../../../interfaces/location.interface';
+import { ILocationPopulate} from './../../../interfaces/location.interface';
 
 import { LocationService } from './../services/location.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,16 +12,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LocationViewComponent implements OnInit {
   id:string = ''
-  placeHolders: LocationGet = locationGetGeneric;
+  placeHolders!: ILocationPopulate;
   constructor(private activateRoute: ActivatedRoute, private locationService:LocationService) {
 
     this.activateRoute.params.subscribe(({id}) => {
       this.id = id
-      this.locationService.getLocationById(id).subscribe(
+      this.locationService.locationGetById(id).subscribe(
       (resp)=>{
-        const location = resp.location
-        let {_id, user, ...rest } = location
-        this.placeHolders = {...rest}
+        const location = resp.result[0]
+        
+        this.placeHolders = location 
  
       }
       )

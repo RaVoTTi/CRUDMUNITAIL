@@ -1,6 +1,6 @@
 import { DivisionService } from './../../services/division.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { IdName } from 'src/interfaces/division.interface';
+import { IDivision } from 'src/interfaces/division.interface';
 import { throwIfEmpty } from 'rxjs';
 
 @Component({
@@ -11,7 +11,7 @@ import { throwIfEmpty } from 'rxjs';
 })
 export class CardComponent implements OnInit {
 
-  @Input() division!: IdName
+  @Input() division!: IDivision
 
 
   constructor(private  divisionService:DivisionService) { }
@@ -21,7 +21,7 @@ export class CardComponent implements OnInit {
   remove(){
     this.divisionService.divisionDelete(this.division._id).subscribe(
       (resp) => {
-        console.log(resp.division.name)
+        console.log(resp.result[0].name)
       }
     )
   }

@@ -1,13 +1,8 @@
-import { IdName } from './division.interface';
+import { IPopulate } from './response.interface';
 
-export interface RESTLocation {
-  count: number;
-  locations: LocationGet[];
-}
-export interface RESTGetLocation {
-  location: LocationGet;
-}
-export const locationPostGeneric: LocationPost = {
+
+export const locationGeneric: ILocation = {
+  
   title: '',
   description: '',
   division: '',
@@ -16,30 +11,36 @@ export const locationPostGeneric: LocationPost = {
   urlImage: '',
   urlLocation: '',
 };
-export const locationGetGeneric: LocationGet = {
+export const locationGenericPopulate: ILocationPopulate = {
+  _id: '',
   title: '',
   description: '',
   division: {
     name: '',
-    _id:''
+    _id: ''
   },
   number: '',
   schedule: '',
   urlImage: '',
   urlLocation: '',
+  user: {
+    name: '',
+    _id: ''
+  },
 };
-export interface LocationGet {
-  _id?: string;
+export interface ILocationPopulate {
+  _id: string;
   title: string;
   description: string;
-  division: IdName;
+  division: IPopulate;
   number: string;
   schedule: string;
   urlImage: string;
   urlLocation: string;
-  user?: IdName;
+  user?: IPopulate;
 }
-export interface LocationPost {
+export interface ILocation {
+  _id?: string;
   title: string;
   description: string;
   division: string;
@@ -47,4 +48,5 @@ export interface LocationPost {
   schedule: string;
   urlImage: string;
   urlLocation: string;
+  user?: string;
 }

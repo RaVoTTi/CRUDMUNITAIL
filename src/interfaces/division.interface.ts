@@ -1,14 +1,9 @@
-export interface RESTDivision {
-    count:     number;
-    divisions: IdName[];
-  }
-export interface RESPONSEDivision {
-    division: IdName;
-}
 
 
-export interface IdName {
+export interface IDivision{
     _id:  string;
     name: string;
+    status: boolean
   }
+
   
