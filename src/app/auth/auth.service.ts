@@ -46,10 +46,12 @@ export class AuthService {
   login(userLogin: IUserLogin): Observable<IResponse<IUser>> {
     return this.http.post<IResponse<IUser>>(`${this._apiUrl}/api/auth`, userLogin).pipe(
       tap((response) => {
-        this._user = response.result[0];
-        this._token = response.token;
+        if(!response.token){
+          this._user = response.result[0];
+          this._token = response.token;
+          localStorage.setItem('super-token', this._token!)
+        }
       }),
-      tap((_) => localStorage.setItem('super-token', this.token)),
     );
   }
 }
