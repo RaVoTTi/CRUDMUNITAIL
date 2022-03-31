@@ -1,27 +1,19 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { IResponse } from 'src/interfaces/response.interface';
 import { IUser, IUserLogin } from 'src/interfaces/auth.interface';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private _apiUrl = environment.apiUrl;
+  private _apiUrl = environment.apiUrl + '/api/auth/';
 
-  private _user: IUser | undefined;
-  private _token: string | undefined;
 
   private _headers: HttpHeaders = new HttpHeaders()
     .set('super-token', localStorage.getItem('super-token') || '')
 
-  get user() {
-    return { ...this._user! }
-  }
-  get token() {
-    return this._token!
-  }
 
   constructor(private http: HttpClient) {
 
@@ -33,25 +25,35 @@ export class AuthService {
   }
 
   verifyJWT(): Observable<boolean> {
-    if (!localStorage.getItem('super-token')) {
+    const token = localStorage.getItem('super-token') || ''
+    if (token === '') {
       return of(false)
-      // return false
     }
-    return of(true)
-    // TODO
-    // return true
+    const headers: HttpHeaders = new HttpHeaders()
+      .set('super-token', token)
+    return this.http.get<IResponse<IUser>>(this._apiUrl, { headers: this.headers })
+      .pipe(
+        tap((resp) => {
+          if (resp.ok) {
+            localStorage.setItem('super-token', resp.token!);
+          }
+        }),
+        map(resp => resp.ok),
+        catchError(err => of(false))
+      );
 
   }
 
   login(userLogin: IUserLogin): Observable<IResponse<IUser>> {
-    return this.http.post<IResponse<IUser>>(`${this._apiUrl}/api/auth`, userLogin).pipe(
-      tap((response) => {
-        if(!response.token){
-          this._user = response.result[0];
-          this._token = response.token;
-          localStorage.setItem('super-token', this._token!)
-        }
-      }),
-    );
+    return this.http.post<IResponse<IUser>>(this._apiUrl, userLogin)
+      .pipe(
+        tap(resp => {
+          if (resp.ok) {
+            localStorage.setItem('super-token', resp.token!);
+          }
+        }),
+        // map( resp => resp.ok ),
+        catchError((err) => of((err) as IResponse<IUser>)),
+      );
   }
 }

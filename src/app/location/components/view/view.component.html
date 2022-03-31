@@ -4,15 +4,15 @@
   <div>
     <img
       class="object-cover object-center overflow-hidden w-full"
-      src="{{ location.urlImage }}"
-      alt="{{ location.urlImage }}"
+      src="{{ location?.urlImage }}"
+      alt="{{ location?.title }}"
     />
     <div class="p-4">
-      <h1 class="text-xl font-semibold">{{ location.title }}</h1>
+      <h1 class="text-xl font-semibold">{{ location?.title }}</h1>
       <div class="grid col">
-        <h3>{{ location.number }}</h3>
-        <h3>{{ location.schedule }}</h3>
-        <p class="">{{ location.description }}</p>
+        <h3>{{ location?.number }}</h3>
+        <h3>{{ location?.schedule }}</h3>
+        <p class="">{{ location?.description }}</p>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
   <div class="flex justify-between m-4">
     <span
       class="inline-block px-3 py-1 font-semibold bg-gray-200 rounded-full text-md text-violet"
-      >#{{ location.division.name }}</span
+      >#{{ location?.division?.name }}</span
     >
   </div>
 </div>

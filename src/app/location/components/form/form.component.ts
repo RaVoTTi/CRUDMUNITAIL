@@ -12,7 +12,6 @@ import Swal from 'sweetalert2';
 import { LocationService } from './../../services/location.service';
 import { DivisionService } from './../../../division/services/division.service';
 import { IDivision } from 'src/interfaces/division.interface';
-import { tap } from 'rxjs';
 
 
 @Component({
@@ -79,20 +78,19 @@ export class FormComponent implements OnInit, OnChanges {
     );
   }
   locationAdd() {
-    console.log(this.myForm.value)
     this.locationService.locationPost(this.myForm.value).subscribe(
       (resp) => {
-        if (resp.result[0]._id) {
+        if (resp.ok === true) {
           Swal.fire({
             icon: 'success',
-            title: 'Good',
-            text: 'Adicion de location correcta',
+            title: resp.msg,
+
           });
         } else {
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Algo salio Mal',
+            title: resp.msg,
+
           });
         }
       })
@@ -101,43 +99,41 @@ export class FormComponent implements OnInit, OnChanges {
     this.myForm.reset();
   }
   locationEdit() {
-    // console.log(this.myForm.value)
     this.locationService
       .locationPut( this.id , this.myForm.value)
 
       .subscribe((resp) => {
-        if (resp.result[0]._id) {
+        if (resp.ok === true) {
           this.placeHolders = resp.result[0];
           Swal.fire({
             icon: 'success',
-            title: 'Good',
-            text: 'Edicion de location correcta',
+            title: resp.msg,
+
           });
         } else {
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Algo salio Mal',
+            title: resp.msg,
           });
         }
       });
   }
-  remove() {
+  locationRemove() {
     this.locationService.locationDelete(this.id).subscribe((resp) => {
       console.log(resp)
-      if (resp.result[0]._id) {
+      if (resp.ok === true) {
         this.placeHolders = resp.result[0];
         Swal.fire({
           icon: 'success',
-          title: 'Good',
-          text: 'Remove location correctly',
+          title: resp.msg,
+
         });
         this.router.navigate(['./dashboard/location']);
       } else {
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Algo salio Mal',
+          title: resp.msg,
+
         });
       }
     });

@@ -1,27 +1,5 @@
-<!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-<!--
-  This example requires updating your template:
 
-  ```
-  <html class="h-full bg-gray-50">
-  <body class="h-full">
-  ```
--->
+
 <div
   class="flex justify-center items-center px-4 py-12 min-h-full sm:px-6 lg:px-8"
 >
@@ -43,59 +21,33 @@
         </h2>
       </div>
     </div>
-    <form class="mt-8 space-y-6">
-      <div class="rounded-md shadow-sm">
-        <div class="">
+    <form (ngSubmit)="login()" [formGroup]="authForm" class="mt-8 space-y-6" >
+      <div>
+        <div >
           <input
             type="text"
-            name="email"
-            id="email"
-            required
-            [(ngModel)]="userLogin.email"
-            autocomplete="given-name"
+            formControlName="email"
             placeholder="Email"
-            class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
+            class="block mt-3 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
           />
+          <span *ngIf="validateCamp('email')" class="text-sm text-red-600">*Email is required</span>
+
         </div>
         <div class="">
           <input
             type="password"
-            name="password"
-            id="password"
-            [(ngModel)]="userLogin.password"
-
-            required
-            autocomplete="given-name"
+            formControlName="password" 
             placeholder="Password"
-            class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
+            class="block mt-3 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
           />
+          <span *ngIf="validateCamp('password')" class="text-sm text-red-600">*Password is required</span>
+
         </div>
       </div>
-
-      <!-- <div class="flex justify-between items-center">
-        <div class="flex items-center">
-          <input
-            id="remember-me"
-            name="remember-me"
-            type="checkbox"
-            class="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-violet"
-          />
-          <label for="remember-me" class="block ml-2 text-sm text-gray-900">
-            Remember me
-          </label>
-        </div>
-
-        <div class="text-sm">
-          <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-            Forgot your password?
-          </a>
-        </div>
-      </div> -->
 
       <div>
         <button
           type="submit"
-          (click)="login()"
           class="flex relative justify-center px-4 py-2 w-full text-sm font-medium text-white rounded-md border border-transparent bg-violet group hover:bg-aqua focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet"
         >
           <span class="flex absolute inset-y-0 left-0 items-center pl-3">

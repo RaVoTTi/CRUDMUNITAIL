@@ -9,7 +9,7 @@ import {
   RouterStateSnapshot,
   UrlSegment,
 } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,15 +20,15 @@ export class AuthGuard implements CanActivate, CanLoad {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    
+  ): Observable<boolean> | boolean {
     
     
     return this.authService.verifyJWT().pipe(
       tap( auth => {
-        if (!auth){
-          this.router.navigate(['./auth'])
+        if (auth !== true){
+          this.router.navigateByUrl('/auth')
         }
+
       })
     );
 
@@ -37,11 +37,12 @@ export class AuthGuard implements CanActivate, CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  ): Observable<boolean>  | boolean {
     return this.authService.verifyJWT().pipe(
       tap( auth => {
-        if (!auth){
-          this.router.navigate(['./auth'])
+        if (auth !== true){
+          this.router.navigateByUrl('/auth')
+
         }
       })
     );
