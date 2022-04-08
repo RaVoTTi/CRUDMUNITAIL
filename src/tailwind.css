@@ -1,0 +1,21 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+
+
+.btn-primary {
+    @apply px-3 py-2 font-medium text-green-900 rounded-md  hover:bg-aqua hover:text-green-50
+}
+.btn-primary-activate {
+    @apply  px-3 py-2 font-medium text-green-50 rounded-md bg-violet;
+}
+
+
+.spacer {
+    flex: 1 1 auto
+  }
+
+
