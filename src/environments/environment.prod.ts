@@ -1,5 +1,5 @@
 export const environment = {
-  apiUrl: 'http://localhost:8081',
+  apiUrl: 'https://peaceful-wildwood-01110.herokuapp.com',
 
-  production: true
+  production: true,
 };

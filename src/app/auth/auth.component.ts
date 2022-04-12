@@ -7,44 +7,43 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class AuthComponent {
-
+  btnDisable: boolean = false;
   authForm: FormGroup = this.fb.group({
-    email: [,[Validators.required, Validators.email]],
+    email: [, [Validators.required, Validators.email]],
     password: [, [Validators.required, Validators.minLength(6)]],
-
-  })
+  });
 
   constructor(
     private fb: FormBuilder,
-    private router: Router, 
-    private authService: AuthService) { }
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   login() {
-
-    if (this.authForm.invalid){
-      this.authForm.markAllAsTouched()
-      return
+    if (this.authForm.invalid) {
+      this.authForm.markAllAsTouched();
+      return;
     }
+    this.btnDisable = true;
+    // Swal.fire({
+    //   icon: 'question',
+    //   title: 'Iniciara correctamente??'
+    // });
 
-    this.authService.login(this.authForm.value).subscribe(
-      (resp) => {
-        if (resp.ok === true) {
-          console.log('entro')
-          this.router.navigateByUrl('/dashboard/location')
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: resp.msg || 'Error with connection',
-
-          })
-        }
+    this.authService.login(this.authForm.value).subscribe((resp) => {
+      if (resp.ok === true) {
+        this.router.navigateByUrl('/dashboard/location');
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: resp.msg || 'Error with connection',
+        });
       }
-    )
-
+      this.btnDisable = false;
+    });
   }
 
   validateCamp(key: string) {
