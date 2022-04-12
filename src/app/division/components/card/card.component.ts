@@ -2,6 +2,7 @@ import { DivisionService } from './../../services/division.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { IDivision } from 'src/interfaces/division.interface';
 import { throwIfEmpty } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-card',
@@ -22,7 +23,17 @@ export class CardComponent implements OnInit {
     this.isRemoved = true
     this.divisionService.divisionDelete(this.division._id).subscribe(
       (resp) => {
-        console.log(resp.result[0].name)
+                if (resp.ok === true) {
+                  Swal.fire({
+                    icon: 'success',
+                    title: resp.msg,
+                  });
+                } else {
+                  Swal.fire({
+                    icon: 'error',
+                    title: resp.msg,
+                  });
+                }
       }
     )
   }

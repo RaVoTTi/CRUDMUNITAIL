@@ -1,47 +1,39 @@
-
-
 <div
   class="flex justify-center items-center px-4 py-12 min-h-full sm:px-6 lg:px-8"
 >
   <div class="space-y-8 w-full max-w-md">
     <div>
       <img
-        class="hidden mx-auto w-auto h-20 sm:block"
-        src="https://www.malargue.gov.ar/wp-content/uploads/2021/04/logos_Mesa-de-trabajo-1.png"
+        class="mx-auto w-auto h-20  sm:block"
+          src="assets/logo_muni.png"
+        
         alt="Workflow"
       />
-      <div class="sm:hidden">
-        <img
-          class="mx-auto w-auto h-20"
-          src="https://www.malargue.gov.ar/wp-content/uploads/2021/03/logo-top.png"
-          alt="Workflow"
-        />
-        <h2 class="mt-6 text-3xl font-extrabold text-center text-violet">
-          {{ "Malargüe" | uppercase }}
-        </h2>
-      </div>
+
     </div>
-    <form (ngSubmit)="login()" [formGroup]="authForm" class="mt-8 space-y-6" >
+    <form (ngSubmit)="login()" [formGroup]="authForm" class="mt-8 space-y-6">
       <div>
-        <div >
+        <div>
           <input
             type="text"
             formControlName="email"
             placeholder="Email"
             class="block mt-3 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
           />
-          <span *ngIf="validateCamp('email')" class="text-sm text-red-600">*Email is required</span>
-
+          <span *ngIf="validateCamp('email')" class="text-sm text-red-600"
+            >*Email is required</span
+          >
         </div>
         <div class="">
           <input
             type="password"
-            formControlName="password" 
+            formControlName="password"
             placeholder="Password"
             class="block mt-3 w-full rounded-md border-gray-300 shadow-sm focus:ring-violet focus:border-violet sm:text-sm"
           />
-          <span *ngIf="validateCamp('password')" class="text-sm text-red-600">*Password is required</span>
-
+          <span *ngIf="validateCamp('password')" class="text-sm text-red-600"
+            >*Password is required</span
+          >
         </div>
       </div>
 
